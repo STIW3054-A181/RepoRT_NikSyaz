@@ -3,25 +3,30 @@ package Project;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.RecursiveAction;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class Count extends RecursiveAction {
-    private static final AtomicInteger count = new AtomicInteger();
+    private static int count = 0;
     public  static int countChar = 0;
     private static int cA,cB,cC,cD,cE,cF,cG,cH,cI,cJ,cK,cL,cM,cN,cO,cP,cQ,cR,cS,cT,cU,cV,cW,cX,cY,cZ;
 
     public final static List<Char> characters = new ArrayList<>();
-    private List<Read> list;
+    private List<Project.Row> list;
     private int first,last;
 
-    public Count(List<Read> list, int first, int last) {
+    /*public Count(List<Row> list, int first, int last) {
         this.list = list;
         this.first = first;
         this.last = last;
+    }*/
+
+    public Count(List<Project.Row> list, int first, int size) {
+        this.list = list;
+        this.first = first;
+        this.last = size;
     }
 
     protected void compute() {
-        if(last-first>6) {
+        if(last-first>10) {
             int middle=(first+last)/2;
             Count t1 = new Count(list,first,middle+1);
             Count t2 = new Count(list,middle+1,last);
@@ -29,7 +34,7 @@ public class Count extends RecursiveAction {
             t2.fork();
         }
         else {
-            System.out.println(Thread.currentThread().getName()+": "+first+" "+last);
+            //System.out.println(Thread.currentThread().getName()+": "+first+" "+last);
             calculateCount();
         }
     }
@@ -37,14 +42,18 @@ public class Count extends RecursiveAction {
     private void calculateCount() {
         for (int i=first;i<last;i++)
         {
-            Read line = ReadPdf.read.get(i);
-            line.getRead().indexOf(" ");
-            count.getAndIncrement();
+            Row line= ReadPdf.rows.get(i);
+            //line.getRead().indexOf(" ");
+            //count.getAndIncrement();
+            char column=' ';
 
-            for (int j=0;j<line.getRead().length();j++){
-                char charecter=line.getRead().charAt(j);
+            for (int j=0;j<line.getRow().length();j++){
+                if (line.getRow().charAt(j)==column){
+                    count++; // Add 1 value when word detected
+                }
+                char character=line.getRow().charAt(j);
 
-                switch (charecter) {
+                switch (character) {
                     case 'A':
                         cA++;
                         countChar++;

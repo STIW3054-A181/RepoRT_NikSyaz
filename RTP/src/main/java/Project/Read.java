@@ -1,4 +1,4 @@
-package Project;
+/*package Project;
 
 public class Read {
     private final String read;
@@ -10,4 +10,4 @@ public class Read {
     public String getRead() {
         return read;
     }
-}
+}*/
