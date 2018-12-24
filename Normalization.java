@@ -71,19 +71,6 @@ public class Normalization {
              xyChart.updateXYSeries(SERIES_NAME, null, yData, null);
     }
 
-    double[] xData = new double[] { 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16 };
-
-        // Create Chart
-        //XYChart chart = QuickChart.getChart("Normalization Graph", "X", "Y", "y(x)", xData, yData);
-
-        // Show it
-
-
-        // Save it
-        //BitmapEncoder.saveBitmap(chart, "./Sample_Chart", BitmapEncoder.BitmapFormat.PNG);
-
-        // or save it in high-res
-        //BitmapEncoder.saveBitmapWithDPI(chart, "./Sample_Chart_300_DPI", BitmapEncoder.BitmapFormat.PNG, 300);
     }
 
 
